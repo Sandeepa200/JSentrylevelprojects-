@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEI3346 LAB Test 04 WE</title>
+    <script>
+        function converting(){
+            var a = document.getElementById("inputNum").value; //assingning the input VALUE to a
+            var b = document.getElementById("method").value; //assingning the selected method VALUE to b
+
+            if (a<0){
+                alert("Please Enter Positive Number"); //chek if input is positive or negative
+            }
+            else {
+                if (b=="Fahrenheit to Celsius"){
+                    a = ((a-32)*5)/9;
+                    document.getElementById("display").innerHTML = "You selected: " + b +"<br><br>"+ a + "\u00B0C"; //converting input value to celsius
+                    if (a>=0){
+                        document.getElementById("display").style.backgroundColor = "green"; //changing the "p" background color
+                    }
+                    else{
+                        document.getElementById("display").style.backgroundColor = "red";
+                    }
+                }
+                else if (b=="Celsius to Fahrenheit"){
+                    a = ((a/5)*9)+32;
+                    document.getElementById("display").innerHTML = "You selected: " + b +"<br><br>"+ a + "\u00B0F"; //converting input value to fahrenheit
+                    if (a>=0){
+                        document.getElementById("display").style.backgroundColor = "green"; //changing the "p" background color
+                    }
+                    else{
+                        document.getElementById("display").style.backgroundColor = "red";
+                    }
+                }
+                else{
+                    alert("please select the converting method"); //reminding user to select method
+                }
+            }
+        }
+        
+        function selection(m){
+            document.getElementById("display").innerHTML = "You selected: " + m; // displaying the selected method
+        }
+        
+        function refresh(){
+            location.reload(); //reset the entire page
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1 style="text-align : center;">Temperature Converter</h1>
+    </div>
+    <div style="text-align : center; border : 1px solid black; width : 30%; margin-left :35%; padding-bottom: 15px;">
+
+        <p id="display" style= "background-color : gray; height : 80px; font-size: 20px;">0</p>
+
+        <select id="method" onchange="selection(this.value)">
+            <option value="nothing" selected>Select</option>
+            <option value="Fahrenheit to Celsius">Fahrenheit to Celsius</option>
+            <option value="Celsius to Fahrenheit">Celsius to Fahrenheit</option>
+        </select>
+        <br><br>
+
+        <input id="inputNum" type="number" ><br><br>
+
+        <button type="button" onclick="converting()">Convert</button>
+        <button type="button" onclick="refresh()">clear</button>
+
+        <br>
+
+    </div>
+</body>
+</html>

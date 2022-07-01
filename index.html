@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEI3346 LAB Test 04</title>
+    <script>
+        function selection(m){
+            document.getElementById("display").innerHTML = "You selected: " + m; // displaying the selected method
+            
+            if(m == "div"){
+                document.getElementById("n3").disabled = true; // disabling the 3rd input area
+            }
+            else{
+                document.getElementById("n3").disabled = false;
+            }
+        }
+
+        function cal(){  //calculating math
+            var a = document.getElementById("n1").value;
+            var b = document.getElementById("n2").value;
+            var c = document.getElementById("n3").value;
+            var z = document.getElementById("meth").value;
+            var answer = 0;
+
+            if(a==0 || b==0 || c==0 && z == "div"){ //cheking user trying to divide a number by 0
+                alert("You can't divide by Zero");
+            }
+            else {
+                
+                if (z=="div"){
+                    answer = a/b;
+                    document.getElementById("display").innerHTML = "You selected: " + z +"<br><br>"+"Your answer is : "+ answer; //dividing
+                }
+                else if (z=="add"){
+                    answer = a+b+c;
+                    document.getElementById("display").innerHTML = "You selected: " + z +"<br><br>"+"Your answer is : "+ answer; //addition
+                }
+                else if (z=="sub"){
+                    answer = a-b-c;
+                    document.getElementById("display").innerHTML = "You selected: " + z +"<br><br>"+"Your answer is : "+ answer; //subsitution
+                }
+                else {
+                    answer = a*b*c;
+                    document.getElementById("display").innerHTML = "You selected: " + z +"<br><br>"+"Your answer is : "+ answer; //multipycation
+                }
+                
+            } 
+        }
+        
+        function refresh(){
+            location.reload(); //reset the entire page
+        }
+
+
+    </script>
+    <style>
+        button{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 style="text-align : center;">Calculator</h1>
+    </div>
+
+    <div style="text-align : center; border : 1px solid black; width : 30%; margin-left :35%; padding-bottom: 15px;">
+
+        <p id="display" style= "background-color : gray; height : 80px; font-size: 20px;">0</p>
+
+        <select id = meth onchange="selection(this.value)">
+            <option value="add">Add</option>
+            <option value="sub">Sub</option>
+            <option value="mul">Mul</option>
+            <option value="div">Div</option>
+        <select>
+            <br>
+            <br>
+
+        <input type="number" id="n1"><br><br>
+        <input type="number" id="n2"><br><br>
+        <input type="number" id="n3"><br><br>
+
+        
+        <button type="button" onclick="cal()">Calculate</button>
+        <button type="button" onclick="refresh()">clear</button>
+    </div>
+</body>
+</html>
